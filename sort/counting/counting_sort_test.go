@@ -1,4 +1,4 @@
-package bubble
+package counting
 
 import (
 	"github.com/ricardojonathanromero/basics/utils/sort"
@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestBubbleSort(t *testing.T) {
+func TestCountingSort(t *testing.T) {
 	tests := []struct {
 		name       string
 		input      []int
@@ -45,6 +45,21 @@ func TestBubbleSort(t *testing.T) {
 			want:  sort.IntSorted,
 		},
 		{
+			name:  "random_unsorted_slice_10000",
+			input: sort.GenerateRandomIntSlice(10000),
+			want:  sort.IntSorted,
+		},
+		{
+			name:  "random_unsorted_slice_100000",
+			input: sort.GenerateRandomIntSlice(100000),
+			want:  sort.IntSorted,
+		},
+		{
+			name:  "random_unsorted_slice_1000000",
+			input: sort.GenerateRandomIntSlice(1000000),
+			want:  sort.IntSorted,
+		},
+		{
 			name:       "one_item",
 			input:      []int{},
 			optimalWay: true,
@@ -80,15 +95,33 @@ func TestBubbleSort(t *testing.T) {
 			optimalWay: true,
 			want:       sort.IntSorted,
 		},
+		{
+			name:       "random_unsorted_slice_10000_optimized",
+			input:      sort.GenerateRandomIntSlice(10000),
+			optimalWay: true,
+			want:       sort.IntSorted,
+		},
+		{
+			name:       "random_unsorted_slice_100000_optimized",
+			input:      sort.GenerateRandomIntSlice(100000),
+			optimalWay: true,
+			want:       sort.IntSorted,
+		},
+		{
+			name:       "random_unsorted_slice_1000000_optimized",
+			input:      sort.GenerateRandomIntSlice(1000000),
+			optimalWay: true,
+			want:       sort.IntSorted,
+		},
 	}
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
 			var actual []int
 			if test.optimalWay {
-				actual = bubbleOptimalSolution(test.input)
+				actual = countingOptimizedSort(test.input)
 			} else {
-				actual = bubbleSort(test.input)
+				actual = countingSort(test.input)
 			}
 
 			if test.expected != nil && !assert.Equal(t, test.expected, actual) {
