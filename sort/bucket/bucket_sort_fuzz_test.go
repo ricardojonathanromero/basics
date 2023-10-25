@@ -13,7 +13,7 @@ func fuzzBucketSort(t *testing.T, title string, input []float64) {
 
 	// Verify that the array is sorted
 	if !sort.FloatSorted(arr) {
-		t.Errorf("Bubble Sort failed to sort the array: %v", arr)
+		t.Errorf("Bucket Sort failed to sort the array: %v", arr)
 	}
 }
 
@@ -24,7 +24,7 @@ func fuzzBucketSortOptimal(t *testing.T, title string, input []float64) {
 
 	// Verify that the array is sorted
 	if !sort.FloatSorted(arr) {
-		t.Errorf("Bubble Sort failed to sort the array: %v", arr)
+		t.Errorf("Bucket Sort failed to sort the array: %v", arr)
 	}
 }
 
