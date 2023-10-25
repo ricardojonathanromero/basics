@@ -24,3 +24,7 @@ go.work
 # ides
 .idea
 .vscode
+
+# another files
+**/*.out
+**/*txt

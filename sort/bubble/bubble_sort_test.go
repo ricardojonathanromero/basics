@@ -47,4 +47,14 @@ func TestBubbleSort(t *testing.T) {
 			}
 		})
 	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			result := bubbleOptimalSolution(test.input)
+			if !assert.Equal(t, test.expected, result) {
+				t.Errorf("Test case %s failed. Expected: %v, Got: %v", test.name, test.expected, result)
+				t.Fail()
+			}
+		})
+	}
 }
