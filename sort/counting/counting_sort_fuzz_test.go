@@ -12,7 +12,7 @@ func fuzzCountingSort(t *testing.T, title string, input []int) {
 
 	// Verify that the array is sorted
 	if !sort.IntSorted(arr) {
-		t.Errorf("Bubble Sort failed to sort the array: %v", arr)
+		t.Errorf("Counting Sort failed to sort the array: %v", arr)
 	}
 }
 
@@ -23,7 +23,7 @@ func fuzzCountingSortOptimal(t *testing.T, title string, input []int) {
 
 	// Verify that the array is sorted
 	if !sort.IntSorted(arr) {
-		t.Errorf("Bubble Sort failed to sort the array: %v", arr)
+		t.Errorf("Counting Sort failed to sort the array: %v", arr)
 	}
 }
 
