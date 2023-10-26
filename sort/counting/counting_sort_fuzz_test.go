@@ -8,22 +8,22 @@ import (
 func fuzzCountingSort(t *testing.T, title string, input []int) {
 	t.Logf("start %s test", title)
 	// Sort the array using Bubble Sort
-	arr := countingSort(input)
+	countingSort(input)
 
 	// Verify that the array is sorted
-	if !sort.IntSorted(arr) {
-		t.Errorf("Counting Sort failed to sort the array: %v", arr)
+	if !sort.IntSorted(input) {
+		t.Errorf("Counting Sort failed to sort the array: %v", input)
 	}
 }
 
 func fuzzCountingSortOptimal(t *testing.T, title string, input []int) {
 	t.Logf("start %s test", title)
 	// Sort the array using Bubble Sort
-	arr := countingOptimizedSort(input)
+	countingOptimizedSort(input)
 
 	// Verify that the array is sorted
-	if !sort.IntSorted(arr) {
-		t.Errorf("Counting Sort failed to sort the array: %v", arr)
+	if !sort.IntSorted(input) {
+		t.Errorf("Counting Sort failed to sort the array: %v", input)
 	}
 }
 

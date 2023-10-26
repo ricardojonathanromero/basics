@@ -1,7 +1,7 @@
 package bubble
 
 // []int{64, 34, 25, 12, 22, 11, 90},
-func bubbleSort(arr []int) []int {
+func bubbleSort(arr []int) {
 	// Implement the Bubble Sort algorithm to sort the slice.
 
 	// skipp the first element to compare after
@@ -14,11 +14,9 @@ func bubbleSort(arr []int) []int {
 			}
 		}
 	}
-
-	return arr
 }
 
-func bubbleOptimalSolution(arr []int) []int {
+func bubbleOptimalSolution(arr []int) {
 	n := len(arr)
 	swapped := true
 
@@ -32,6 +30,4 @@ func bubbleOptimalSolution(arr []int) []int {
 			}
 		}
 	}
-
-	return arr
 }

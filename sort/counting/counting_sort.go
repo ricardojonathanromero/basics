@@ -1,8 +1,8 @@
 package counting
 
-func countingSort(arr []int) []int {
+func countingSort(arr []int) {
 	if len(arr) <= 1 {
-		return arr
+		return
 	}
 
 	// 1. Determine the Range
@@ -44,12 +44,14 @@ func countingSort(arr []int) []int {
 	}
 
 	// 8. Final Output
-	return out
+	for i := 0; i < len(out); i++ {
+		arr[i] = out[i]
+	}
 }
 
-func countingOptimizedSort(arr []int) []int {
+func countingOptimizedSort(arr []int) {
 	if len(arr) == 0 {
-		return arr
+		return
 	}
 
 	maximum := arr[0]
@@ -75,5 +77,7 @@ func countingOptimizedSort(arr []int) []int {
 		}
 	}
 
-	return sortedArray
+	for i := 0; i < len(sortedArray); i++ {
+		arr[i] = sortedArray[i]
+	}
 }

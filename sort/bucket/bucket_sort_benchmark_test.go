@@ -1,29 +1,12 @@
 package bucket
 
 import (
-	"github.com/ricardojonathanromero/basics/utils/parallelism"
 	"github.com/ricardojonathanromero/basics/utils/sort"
 	"testing"
 )
 
-func wrapBucketSort(args ...any) any {
-	return bucketSort(floatToAny(args...))
-}
-
-func wrapBucketSortOptimalSolution(args ...any) any {
-	return bucketSortOptimalSolution(floatToAny(args...))
-}
-
-func floatToAny(args ...any) []float64 {
-	convertedArgs := make([]float64, len(args))
-	for i, v := range args {
-		convertedArgs[i] = v.(float64)
-	}
-	return convertedArgs
-}
-
 func BenchmarkBucketSort(b *testing.B) {
-	benchmarks := []struct {
+	tests := []struct {
 		name       string
 		input      []float64
 		optimalWay bool
@@ -39,40 +22,20 @@ func BenchmarkBucketSort(b *testing.B) {
 		},
 	}
 
-	// create worker for all the benchmark tests
-	worker := parallelism.NewParallel()
-
-	for _, bm := range benchmarks {
-		b.Run(bm.name, func(b *testing.B) {
+	for _, test := range tests {
+		b.Run(test.name, func(b *testing.B) {
 			for i := 0; i < b.N; i++ {
-				// iterate until count parameter. by default 1
-				var to parallelism.To
-				var next parallelism.Next
-
-				if bm.optimalWay {
-					to = wrapBucketSortOptimalSolution
+				if test.optimalWay {
+					bucketSortOptimalSolution(test.input)
 				} else {
-					to = wrapBucketSort
+					bucketSort(test.input)
 				}
 
-				next = func(arr any) {
-					numbers, ok := arr.([]float64)
-					if !ok {
-						b.Errorf("result is not type []int, %v\n", arr)
-						b.FailNow()
-					}
-
-					if !sort.FloatSorted(numbers) {
-						b.Error("!result is not sorted")
-						b.FailNow()
-					}
+				if !sort.FloatSorted(test.input) {
+					b.Error("!result is not sorted")
+					b.FailNow()
 				}
-
-				worker.RunInParallel(to, next)
 			}
-
-			// wait for results
-			worker.Wait()
 		})
 	}
 }

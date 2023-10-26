@@ -5,7 +5,7 @@ import "container/heap"
 /*
 1.build max heap
 */
-func heapSort(arr []int) []int {
+func heapSort(arr []int) {
 	// get length
 	length := len(arr)
 	middle := length/2 - 1
@@ -22,8 +22,6 @@ func heapSort(arr []int) []int {
 		// Call heapify on the reduced heap (excluding the last element)
 		heapify(arr, last, 0)
 	}
-
-	return arr
 }
 
 func heapify(arr []int, length, root int) {
@@ -46,7 +44,7 @@ func heapify(arr []int, length, root int) {
 	}
 }
 
-func heapSortOptimal(arr []int) []int {
+func heapSortOptimal(arr []int) {
 	h := IntHeap(arr)
 	//h := &IntHeap(arr)
 
@@ -57,8 +55,6 @@ func heapSortOptimal(arr []int) []int {
 	for i := len(arr) - 1; i >= 0; i-- {
 		arr[i] = heap.Pop(&h).(int)
 	}
-
-	return arr
 }
 
 type IntHeap []int
