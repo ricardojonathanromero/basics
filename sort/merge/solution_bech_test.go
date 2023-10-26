@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func Benchmark(b *testing.B) {
+func BenchmarkMergeSort(b *testing.B) {
 	tests := []struct {
 		name       string
 		input      []int
