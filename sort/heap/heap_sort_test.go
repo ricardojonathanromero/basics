@@ -60,15 +60,14 @@ func Test(t *testing.T) {
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			var actual []int
 			if test.optimalWay {
-
+				heapSortOptimal(test.input)
 			} else {
-				actual = heapSort(test.input)
+				heapSort(test.input)
 			}
 
-			if test.want != nil && !test.want(actual) {
-				t.Errorf("array is not sorted! \n%v\n", actual)
+			if test.want != nil && !test.want(test.input) {
+				t.Errorf("array is not sorted! \n%v\n", test.input)
 				t.FailNow()
 			}
 		})

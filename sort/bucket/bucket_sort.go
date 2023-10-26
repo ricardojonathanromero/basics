@@ -6,9 +6,9 @@ import (
 	"sync"
 )
 
-func bucketSort(arr []float64) []float64 {
+func bucketSort(arr []float64) {
 	if len(arr) <= 1 {
-		return arr
+		return
 	}
 
 	minVal, maxVal := arr[0], arr[0]
@@ -57,7 +57,6 @@ func bucketSort(arr []float64) []float64 {
 	}
 
 	// return the result sorted!
-	return arr
 }
 
 func insertionSortHelper(arr []float64) {
@@ -73,9 +72,9 @@ func insertionSortHelper(arr []float64) {
 // Define the number of goroutines to use for sorting
 const numGoroutines = 4
 
-func bucketSortOptimalSolution(arr []float64) []float64 {
+func bucketSortOptimalSolution(arr []float64) {
 	if len(arr) <= 1 {
-		return arr
+		return
 	}
 
 	// Find the minimum and maximum values in the array
@@ -136,6 +135,4 @@ func bucketSortOptimalSolution(arr []float64) []float64 {
 			index++
 		}
 	}
-
-	return arr
 }

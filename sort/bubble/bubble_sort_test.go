@@ -84,19 +84,18 @@ func TestBubbleSort(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			var actual []int
 			if test.optimalWay {
-				actual = bubbleOptimalSolution(test.input)
+				bubbleOptimalSolution(test.input)
 			} else {
-				actual = bubbleSort(test.input)
+				bubbleSort(test.input)
 			}
 
-			if test.expected != nil && !assert.Equal(t, test.expected, actual) {
-				t.Errorf("Result return a value not expected %v\n", actual)
+			if test.expected != nil && !assert.Equal(t, test.expected, test.input) {
+				t.Errorf("Result return a value not expected %v\n", test.input)
 				t.FailNow()
 			}
-			if test.want != nil && !test.want(actual) {
-				t.Errorf("Result return a value not expected %v\n", actual)
+			if test.want != nil && !test.want(test.input) {
+				t.Errorf("Result return a value not expected %v\n", test.input)
 				t.FailNow()
 			}
 		})

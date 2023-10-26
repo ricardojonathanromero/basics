@@ -9,22 +9,22 @@ import (
 func fuzzBubbleSort(t *testing.T, title string, input []int) {
 	t.Logf("start %s test", title)
 	// Sort the array using Bubble Sort
-	arr := bubbleSort(input)
+	bubbleSort(input)
 
 	// Verify that the array is sorted
-	if !sort.IntSorted(arr) {
-		t.Errorf("Bubble Sort failed to sort the array: %v", arr)
+	if !sort.IntSorted(input) {
+		t.Errorf("Bubble Sort failed to sort the array: %v", input)
 	}
 }
 
 func fuzzBubbleSortOptimal(t *testing.T, title string, input []int) {
 	t.Logf("start %s test", title)
 	// Sort the array using Bubble Sort
-	arr := bubbleOptimalSolution(input)
+	bubbleOptimalSolution(input)
 
 	// Verify that the array is sorted
-	if !sort.IntSorted(arr) {
-		t.Errorf("Bubble Sort failed to sort the array: %v", arr)
+	if !sort.IntSorted(input) {
+		t.Errorf("Bubble Sort failed to sort the array: %v", input)
 	}
 }
 

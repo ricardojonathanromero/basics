@@ -95,18 +95,16 @@ func TestBucketSort(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			var actual []float64
-
 			if test.optimalWay {
-				actual = bucketSortOptimalSolution(test.input)
+				bucketSortOptimalSolution(test.input)
 			} else {
-				actual = bucketSort(test.input)
+				bucketSort(test.input)
 			}
 
-			if test.expect != nil && !assert.Equal(t, test.expect, actual) {
+			if test.expect != nil && !assert.Equal(t, test.expect, test.input) {
 				t.Errorf("test %s does not return the expected value\n", test.name)
 				t.FailNow()
-			} else if test.want != nil && !test.want(actual) {
+			} else if test.want != nil && !test.want(test.input) {
 				t.Errorf("test %s does not return the expected value\n", test.name)
 				t.FailNow()
 			}

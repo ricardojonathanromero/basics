@@ -9,22 +9,22 @@ import (
 func fuzzBucketSort(t *testing.T, title string, input []float64) {
 	t.Logf("start %s test", title)
 	// Sort the array using Bubble Sort
-	arr := bucketSort(input)
+	bucketSort(input)
 
 	// Verify that the array is sorted
-	if !sort.FloatSorted(arr) {
-		t.Errorf("Bucket Sort failed to sort the array: %v", arr)
+	if !sort.FloatSorted(input) {
+		t.Errorf("Bucket Sort failed to sort the array: %v", input)
 	}
 }
 
 func fuzzBucketSortOptimal(t *testing.T, title string, input []float64) {
 	t.Logf("start %s test", title)
 	// Sort the array using Bubble Sort
-	arr := bucketSortOptimalSolution(input)
+	bucketSortOptimalSolution(input)
 
 	// Verify that the array is sorted
-	if !sort.FloatSorted(arr) {
-		t.Errorf("Bucket Sort failed to sort the array: %v", arr)
+	if !sort.FloatSorted(input) {
+		t.Errorf("Bucket Sort failed to sort the array: %v", input)
 	}
 }
 
