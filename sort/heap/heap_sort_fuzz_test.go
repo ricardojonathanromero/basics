@@ -28,7 +28,7 @@ func fuzzHeapSortOptimal(t *testing.T, title string, input []int) {
 }
 
 func FuzzAll(f *testing.F) {
-	f.Add("counting_sort_fuzz_test")
+	f.Add("heap_sort_fuzz_test")
 	f.Fuzz(func(t *testing.T, s string) {
 		input := sort.GenerateRandomIntSlice(1000)
 		fuzzHeapSortOptimal(t, s, input)
