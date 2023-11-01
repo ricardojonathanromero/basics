@@ -1,11 +1,11 @@
-package selection
+package shell
 
 import (
 	"github.com/ricardojonathanromero/basics/utils/sort"
 	"testing"
 )
 
-func TestSelectionSort(t *testing.T) {
+func TestShellSort(t *testing.T) {
 	tests := []struct {
 		name  string
 		input []int
@@ -13,7 +13,7 @@ func TestSelectionSort(t *testing.T) {
 	}{
 		{
 			name:  "simple_test",
-			input: []int{2, 8, 5, 3, 9, 4, 1},
+			input: []int{7, 6, 8, 9, 3, 2, 10, 5, 1},
 			want:  sort.IntSorted,
 		},
 		{
@@ -37,9 +37,10 @@ func TestSelectionSort(t *testing.T) {
 			want:  sort.IntSorted,
 		},
 	}
+
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			selectionSort(test.input)
+			shellSort(test.input)
 
 			if test.want != nil && !test.want(test.input) {
 				t.FailNow()
